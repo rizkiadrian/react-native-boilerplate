@@ -39,5 +39,6 @@ export default StyleSheet.create({
     width: 311,
     height: 52,
     marginTop: 24,
+    alignSelf: 'center',
   },
 });
