@@ -3,7 +3,14 @@ type FontNumber = 100 | 200 | 300 | 500 | 600 | 900;
 
 export default {
   colorVariable: {
+    white: '#FFF',
     text1: '#3A544F',
+  },
+  gradient: {
+    blue: {
+      colors: ['#176FF2', '#196EEE'],
+      degree: 271,
+    },
   },
   fontFamily: (values: FontNumber | FontString) => {
     switch (values) {

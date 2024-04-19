@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
  * Screen that will be imported on app
  */
 import HomeScreen from 'src/screens/Home';
+import PreloginScreen from 'src/screens/Prelogin';
 
 import screens from 'src/configs/screen-configs';
 
@@ -17,7 +18,12 @@ function Routes(): JSX.Element {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={screens.homepage.key}>
+      <Stack.Navigator initialRouteName={screens.prelogin.key}>
+        <Stack.Screen
+          name={screens.prelogin.key}
+          options={screens.prelogin.options}
+          component={PreloginScreen}
+        />
         <Stack.Screen
           name={screens.homepage.key}
           options={screens.homepage.options}

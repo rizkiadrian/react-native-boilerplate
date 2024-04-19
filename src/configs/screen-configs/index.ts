@@ -34,6 +34,14 @@ const screens = asRecord({
       title: 'Homepage',
     },
   },
+  prelogin: {
+    name: 'Prelogin',
+    key: StackScreens.Prelogin,
+    options: {
+      title: 'Prelogin',
+      headerShown: false,
+    },
+  },
 });
 
 export default screens;

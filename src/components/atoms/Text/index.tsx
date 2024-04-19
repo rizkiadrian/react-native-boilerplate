@@ -11,7 +11,7 @@ interface Props extends TextProps {
 }
 
 function Text(props: Props): JSX.Element {
-  return <RNText style={[typographySheet.text, props.style]} {...props} />;
+  return <RNText {...props} style={[typographySheet.text, props.style]} />;
 }
 
 export default Text;

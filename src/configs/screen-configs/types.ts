@@ -3,6 +3,7 @@
  */
 export enum StackScreens {
   Homepage = 'Homepage',
+  Prelogin = 'Prelogin',
 }
 
 /**
@@ -10,4 +11,5 @@ export enum StackScreens {
  */
 export type ScreenParamsList = {
   [StackScreens.Homepage]: undefined;
+  [StackScreens.Prelogin]: undefined;
 };
