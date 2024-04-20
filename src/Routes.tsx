@@ -8,6 +8,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from 'src/screens/Home';
 import PreloginScreen from 'src/screens/Prelogin';
 
+/**
+ * Navigation ref variable will be passed as helper function on whole function in this app
+ */
+import {navigationRef} from 'src/utilities/navigation';
+
 import screens from 'src/configs/screen-configs';
 
 function Routes(): JSX.Element {
@@ -17,7 +22,7 @@ function Routes(): JSX.Element {
   const Stack = createNativeStackNavigator();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator initialRouteName={screens.prelogin.key}>
         <Stack.Screen
           name={screens.prelogin.key}
