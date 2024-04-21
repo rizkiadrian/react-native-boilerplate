@@ -3,7 +3,10 @@ import React from 'react';
 /**
  * Tab libraries from react navigation
  */
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  createBottomTabNavigator,
+  BottomTabBarProps,
+} from '@react-navigation/bottom-tabs';
 
 /**
  * Available screen that will be rendered as Tabs
@@ -15,13 +18,22 @@ import Account from 'src/screens/Account';
 import {tabScreens} from 'src/configs/screen-configs';
 
 /**
+ * Custom tab bar component that will be passed on tab bar navigation instance
+ */
+import TabBar from 'src/components/molecules/tab-bar';
+
+/**
  * Initialize Bottom Tab instance variable
  */
 const Tab = createBottomTabNavigator();
 
 function HomeScreen(): JSX.Element {
+  const renderTabBar = (props: BottomTabBarProps) => {
+    return <TabBar {...props} />;
+  };
+
   return (
-    <Tab.Navigator>
+    <Tab.Navigator tabBar={renderTabBar}>
       <Tab.Screen
         name={tabScreens.dashboard.key}
         component={Dashboard}

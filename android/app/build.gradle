@@ -117,3 +117,8 @@ dependencies {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+// React native vector icons setting only compile used icon for smoother config
+project.ext.vectoricons = [
+    iconFontNames: ['Ionicons.ttf'] // Specify font files
+]
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
