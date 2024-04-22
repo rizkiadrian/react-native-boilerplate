@@ -31,5 +31,5 @@ export type TabParamsList = {
   [Tabscreens.Dashboard]: undefined;
   [Tabscreens.Promo]: undefined;
   [Tabscreens.Favorites]: undefined;
-  [Tabscreens.Promo]: undefined;
+  [Tabscreens.Account]: undefined;
 };

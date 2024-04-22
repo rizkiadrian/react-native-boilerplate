@@ -5,6 +5,8 @@ export default {
   colorVariable: {
     white: '#FFF',
     text1: '#3A544F',
+    icon: '#B8B8B8',
+    blue: '#176FF2',
   },
   gradient: {
     blue: {

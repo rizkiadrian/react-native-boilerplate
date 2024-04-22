@@ -1,5 +1,8 @@
 import React from 'react';
-import {NavigationContainerRef} from '@react-navigation/native';
+import {
+  NavigationAction,
+  NavigationContainerRef,
+} from '@react-navigation/native';
 import {ScreenParamsList, StackScreens} from 'src/configs/screen-configs/types';
 
 /**
@@ -10,4 +13,8 @@ export const navigationRef =
 
 export const navigate = (name: StackScreens, params?: undefined) => {
   navigationRef.current?.navigate(name, params);
+};
+
+export const navDispatch = (navParams: NavigationAction) => {
+  navigationRef.current?.dispatch(navParams);
 };
