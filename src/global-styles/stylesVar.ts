@@ -4,6 +4,7 @@ type FontNumber = 100 | 200 | 300 | 500 | 600 | 900;
 export default {
   colorVariable: {
     white: '#FFF',
+    black: '#000',
     text1: '#3A544F',
     icon: '#B8B8B8',
     blue: '#176FF2',
