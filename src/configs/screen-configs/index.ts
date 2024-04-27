@@ -1,89 +1,78 @@
-import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
-import {NavigationProp, RouteProp} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
-  StackScreens,
-  ScreenParamsList,
-  Tabscreens,
-} from 'src/configs/screen-configs/types';
+  RootStackParamList,
+  TabParamsList,
+} from 'src/configs/screen-configs/types.d';
+import {ComponentProps, ComponentType} from 'react';
 
 /**
- * Create interface to be passed to Routes file as Config
+ * Screen that will be imported on app
  */
-interface Screen {
-  name: string;
-  key: StackScreens | Tabscreens;
-  options:
-    | NativeStackNavigationOptions
-    | ((props: {
-        route: RouteProp<ScreenParamsList>;
-        navigation: NavigationProp<ScreenParamsList>;
-      }) => NativeStackNavigationOptions);
-}
+import HomeScreen from 'src/screens/Home';
+import PreloginScreen from 'src/screens/Prelogin';
 
 /**
- * Create function that hold collection of object that will be displayed as suggestion
+ * Tab that will be imported into specific Tab view
  */
+import Dashboard from 'src/screens/Dashboard';
+import Promo from 'src/screens/Promo';
+import Favorites from 'src/screens/Favorites';
+import Account from 'src/screens/Account';
+/**
+ * Initialize Stack instance with list on in app screens
+ */
+export const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function asRecord<T extends Record<string, Screen>>(
-  arg: T,
-): T & Record<string, Screen> {
-  return arg;
-}
+export const Tab = createBottomTabNavigator<TabParamsList>();
 
 /**
- * Screen list collection that will be renderen on apps
+ * Map all available screen that will be passed on route creator in Route.tsx
  */
-const screens = asRecord({
-  homepage: {
+export const appScreens: ComponentProps<(typeof Stack)['Screen']>[] = [
+  {
     name: 'Homepage',
-    key: StackScreens.Homepage,
+    component: HomeScreen as ComponentType,
     options: {
-      title: 'Homepage',
       headerShown: false,
     },
   },
-  prelogin: {
+  {
     name: 'Prelogin',
-    key: StackScreens.Prelogin,
+    component: PreloginScreen as ComponentType,
     options: {
-      title: 'Prelogin',
       headerShown: false,
     },
   },
-});
+];
 
-/**
- * Tab list collection that will be displayed on main navigation tabs (Homepage)
- */
-export const tabScreens = asRecord({
-  dashboard: {
+export const tabs: ComponentProps<(typeof Tab)['Screen']>[] = [
+  {
     name: 'Dashboard',
-    key: Tabscreens.Dashboard,
+    component: Dashboard,
     options: {
       headerShown: false,
     },
   },
-  promo: {
+  {
     name: 'Promo',
-    key: Tabscreens.Promo,
+    component: Promo,
     options: {
       headerShown: false,
     },
   },
-  favorites: {
+  {
     name: 'Favorites',
-    key: Tabscreens.Favorites,
+    component: Favorites,
     options: {
       headerShown: false,
     },
   },
-  account: {
+  {
     name: 'Account',
-    key: Tabscreens.Account,
+    component: Account,
     options: {
       headerShown: false,
     },
   },
-});
-
-export default screens;
+];

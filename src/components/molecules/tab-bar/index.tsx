@@ -1,12 +1,11 @@
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
-import {TabActions} from '@react-navigation/native';
 import React, {useCallback} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from 'src/components/molecules/tab-bar/styles';
-import {Tabscreens} from 'src/configs/screen-configs/types';
+import {Tabscreens} from 'src/configs/screen-configs/types.d';
 import stylesVar from 'src/global-styles/stylesVar';
-import {navDispatch} from 'src/utilities/navigation';
+import {innerJump} from 'src/utilities/navRef';
 
 function TabBar(props: BottomTabBarProps): JSX.Element {
   const {state} = props;
@@ -70,8 +69,7 @@ function TabBar(props: BottomTabBarProps): JSX.Element {
    * Handle icon press route defined as "any" due to no exported Route type from react nativation
    */
   const handleTabPress = (route: any) => {
-    const jumptoAction = TabActions.jumpTo(route.name);
-    navDispatch(jumptoAction);
+    innerJump(route.name);
   };
 
   return (

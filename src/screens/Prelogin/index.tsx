@@ -2,9 +2,8 @@ import React from 'react';
 import {Image, View} from 'react-native';
 import Text from 'src/components/atoms/Text';
 import Button from 'src/components/molecules/Button';
-import {StackScreens} from 'src/configs/screen-configs/types';
 import styles from 'src/screens/Prelogin/styles';
-import {navigate} from 'src/utilities/navigation';
+import {navigate} from 'src/utilities/navRef';
 
 const preloginImg = require('src/assets/png/bg-aspen.png');
 const aspenLogo = require('src/assets/png/aspen.png');
@@ -21,7 +20,7 @@ function PreloginScreen(): JSX.Element {
           label="Explore"
           rootStyle={styles.btnStyle}
           onPress={() => {
-            navigate(StackScreens.Homepage);
+            navigate('Homepage');
           }}
         />
       </View>
