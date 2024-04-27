@@ -29,7 +29,7 @@ const appSessionPersistConfig = {
   key: REDUX_KEY.AppSession,
   version: 1,
   storage: AsyncStorage, // should use encrypted storage for sensitive info
-  blacklist: [], // put blacklist state here,
+  blacklist: ['appSession'], // put blacklist state here,
 };
 
 /**
@@ -42,7 +42,7 @@ const rootReducer = combineReducers({
 /**
  * Export type of root reducer
  */
-export type RootState = ReturnType<typeof rootReducer>;
+export type IRootState = ReturnType<typeof rootReducer>;
 
 /**
  * Export main persist reducer from root config and combined reducer

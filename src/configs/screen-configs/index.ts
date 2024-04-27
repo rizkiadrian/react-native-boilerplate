@@ -46,6 +46,9 @@ export const appScreens: ComponentProps<(typeof Stack)['Screen']>[] = [
   },
 ];
 
+/**
+ * Map all available tabs that will be rendered into specific tab and pass it to screen using tab
+ */
 export const tabs: ComponentProps<(typeof Tab)['Screen']>[] = [
   {
     name: 'Dashboard',
