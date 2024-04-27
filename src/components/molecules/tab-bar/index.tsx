@@ -3,7 +3,6 @@ import React, {useCallback} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from 'src/components/molecules/tab-bar/styles';
-import {Tabscreens} from 'src/configs/screen-configs/types.d';
 import stylesVar from 'src/global-styles/stylesVar';
 import {innerJump} from 'src/utilities/navRef';
 
@@ -24,7 +23,7 @@ function TabBar(props: BottomTabBarProps): JSX.Element {
    * Icon render based on route name params
    */
   const renderIcon = useCallback(
-    (route: Tabscreens, iconIndex: number) => {
+    (route: string, iconIndex: number) => {
       switch (route) {
         case 'Dashboard':
           return (
@@ -82,7 +81,7 @@ function TabBar(props: BottomTabBarProps): JSX.Element {
             onPress={() => {
               handleTabPress(route);
             }}>
-            {renderIcon(route.name as Tabscreens, index)}
+            {renderIcon(route.name, index)}
           </TouchableOpacity>
         );
       })}
