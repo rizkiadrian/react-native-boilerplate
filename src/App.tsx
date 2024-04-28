@@ -14,6 +14,7 @@ import Routes from 'src/Routes';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistor, store} from 'src/redux/configureStore';
+import Initial from 'src/components/molecules/Initial';
 
 function App(): React.JSX.Element {
   return (
@@ -22,6 +23,7 @@ function App(): React.JSX.Element {
         <PersistGate loading={null} persistor={persistor}>
           <Routes />
         </PersistGate>
+        <Initial />
       </Provider>
     </>
   );

@@ -3,6 +3,7 @@
  */
 import {configureStore} from '@reduxjs/toolkit';
 import {persistStore} from 'redux-persist';
+import {heartbeatApi} from 'src/apis/heartbeat';
 
 /**
  * Import root reducer from configureReducer file
@@ -19,7 +20,7 @@ export const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }),
+    }).concat(heartbeatApi.middleware),
 });
 
 /**

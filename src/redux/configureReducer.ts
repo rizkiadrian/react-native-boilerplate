@@ -4,6 +4,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {combineReducers} from '@reduxjs/toolkit';
 import {persistReducer} from 'redux-persist';
+import {heartbeatApi} from 'src/apis/heartbeat';
 import {REDUX_KEY} from 'src/configs/key-configs';
 
 /**
@@ -37,6 +38,7 @@ const appSessionPersistConfig = {
  */
 const rootReducer = combineReducers({
   appSession: persistReducer(appSessionPersistConfig, AppSessionReducer),
+  [heartbeatApi.reducerPath]: heartbeatApi.reducer,
 });
 
 /**
