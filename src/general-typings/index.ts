@@ -26,3 +26,11 @@ export interface IApiResonse<T> {
   meta: IMeta;
   data: IData<T>;
 }
+
+/**
+ * API / Data typing
+ */
+export interface ICategory {
+  name: string;
+  id: string;
+}

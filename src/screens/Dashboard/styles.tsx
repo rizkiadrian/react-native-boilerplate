@@ -27,4 +27,11 @@ export default StyleSheet.create({
   navTop: {
     paddingHorizontal: 20,
   },
+  inputContainer: {
+    paddingHorizontal: 20,
+    marginTop: 24,
+  },
+  tagList: {
+    marginTop: 32,
+  },
 });

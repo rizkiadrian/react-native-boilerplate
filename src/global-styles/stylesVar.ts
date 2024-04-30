@@ -8,6 +8,8 @@ export default {
     text1: '#3A544F',
     icon: '#B8B8B8',
     blue: '#176FF2',
+    searchInput: '#F3F8FE',
+    blueLow: 'rgba(23, 111, 242, 0.05)',
   },
   gradient: {
     blue: {
