@@ -10,6 +10,8 @@ export default {
     blue: '#176FF2',
     searchInput: '#F3F8FE',
     blueLow: 'rgba(23, 111, 242, 0.05)',
+    skeletonBg: '#adadad',
+    skeletonHighlight: '#ffffff',
   },
   gradient: {
     blue: {
