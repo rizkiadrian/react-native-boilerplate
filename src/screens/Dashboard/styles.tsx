@@ -34,4 +34,10 @@ export default StyleSheet.create({
   tagList: {
     marginTop: 32,
   },
+  productResultList: {
+    marginTop: 32,
+  },
+  productResultContainer: {
+    paddingHorizontal: 20,
+  },
 });

@@ -3,6 +3,7 @@
  */
 export const REDUX_KEY = {
   AppSession: 'appSession',
+  Homepage: 'homePage',
 };
 
 /**

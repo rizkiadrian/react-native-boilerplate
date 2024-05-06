@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
 import CategoryTag from 'src/components/molecules/CategoryTag';
-import {ICategory} from 'src/general-typings';
+import {IActCategory, ICategory} from 'src/general-typings';
 import styles from 'src/components/organisms/CategoryTagScroll/styles';
 import CTSSkeleton from 'src/components/organisms/CategoryTagScroll/skeleton';
 import {useLazyGetCategoriesQuery} from 'src/apis/product';
+import {useDispatch} from 'react-redux';
+import {setActiveCategory} from 'src/redux/reducers/Homepage';
 
 interface Props {
   activeId?: string;
@@ -12,6 +14,7 @@ interface Props {
 
 function CategoryTagScroll(props: Props) {
   const {activeId = '1'} = props;
+  const dispatch = useDispatch();
   const [tagId, setTagId] = useState(activeId);
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -26,12 +29,26 @@ function CategoryTagScroll(props: Props) {
     initial();
   }, [categoryTrigger]);
 
+  // set active category on press on redux
+  const setReduxCategory = useCallback(
+    (a: string) => {
+      const payload: IActCategory = {
+        activeCategory: a,
+      };
+      dispatch(setActiveCategory(payload));
+    },
+    [dispatch],
+  );
+
   const renderCategoryTag = (tag: ListRenderItemInfo<ICategory>) => {
     return (
       <CategoryTag
         tag={tag.item}
         isActive={tag.item.id === tagId}
-        onPress={a => setTagId(a)}
+        onPress={a => {
+          setTagId(a);
+          setReduxCategory(a);
+        }}
       />
     );
   };

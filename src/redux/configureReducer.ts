@@ -10,6 +10,7 @@ import {REDUX_KEY} from 'src/configs/key-configs';
  * Import all reducer as slice here
  */
 import {reducer as AppSessionReducer} from 'src/redux/reducers/appSession';
+import {reducer as HomepageReducer} from 'src/redux/reducers/Homepage';
 
 /**
  * Import All API reducer here
@@ -37,12 +38,19 @@ const appSessionPersistConfig = {
   storage: AsyncStorage, // should use encrypted storage for sensitive info
   blacklist: ['appSession'], // put blacklist state here,
 };
+const homepagePersistConfig = {
+  key: REDUX_KEY.Homepage,
+  version: 1,
+  storage: AsyncStorage,
+  blacklist: ['activeCategory'],
+};
 
 /**
  * Combine it on single reducer instance
  */
 const rootReducer = combineReducers({
   appSession: persistReducer(appSessionPersistConfig, AppSessionReducer),
+  homepage: persistReducer(homepagePersistConfig, HomepageReducer),
   [heartbeatApi.reducerPath]: heartbeatApi.reducer,
   [productApi.reducerPath]: productApi.reducer,
 });

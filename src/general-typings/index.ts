@@ -34,3 +34,28 @@ export interface ICategory {
   name: string;
   id: string;
 }
+
+/**
+ * Place / Product item typing
+ */
+export interface IProduct {
+  id: string;
+  name: string;
+  rating: number | string;
+  is_favorite: boolean;
+  img_url: string;
+}
+
+/**
+ * Query params for get place
+ */
+export interface IPlaceQuery {
+  category_id: number | string;
+}
+
+/**
+ * Homepage Redux - Set active category payload
+ */
+export interface IActCategory {
+  activeCategory: string;
+}
