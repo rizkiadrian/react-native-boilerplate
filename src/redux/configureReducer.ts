@@ -42,7 +42,7 @@ const homepagePersistConfig = {
   key: REDUX_KEY.Homepage,
   version: 1,
   storage: AsyncStorage,
-  blacklist: ['activeCategory'],
+  blacklist: ['activeCategory', 'onProductFetch'],
 };
 
 /**

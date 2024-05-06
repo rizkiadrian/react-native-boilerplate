@@ -27,4 +27,7 @@ export default StyleSheet.create({
     paddingLeft: 12,
     paddingBottom: 12,
   },
+  itemPager: {
+    marginLeft: 12,
+  },
 });

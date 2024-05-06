@@ -6,7 +6,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useLazyGetPlacesQuery} from 'src/apis/product';
 import Text from 'src/components/atoms/Text';
 import ProductItem from 'src/components/molecules/ProductItem';
@@ -15,6 +15,7 @@ import {IPlaceQuery, IProduct} from 'src/general-typings';
 import {IRootState} from 'src/redux/configureReducer';
 import {useDidMountEffect, useDidUpdateEffect} from 'src/utilities/hooks';
 import PLSSkeleton from './skeleton';
+import {setProductFetch} from 'src/redux/reducers/Homepage';
 
 interface Props {
   title?: string;
@@ -24,6 +25,7 @@ interface Props {
 
 function ProductListScroll(props: Props): JSX.Element {
   const {title, titleStyle, titleContainerStyle} = props;
+  const dispatch = useDispatch();
   /**
    * Product API
    */
@@ -39,18 +41,27 @@ function ProductListScroll(props: Props): JSX.Element {
   );
 
   /**
+   * Fetch Base function
+   */
+  const fetchPlace = async () => {
+    setLoading(true);
+    // set prevent press variable on category tab
+    dispatch(setProductFetch(true));
+    const query: IPlaceQuery = {
+      category_id: activeCategory,
+    };
+    const productsRes = await productTrigger(query).unwrap();
+    setProducts(productsRes);
+    setLoading(false);
+    // set prevent press variable on category tab
+    dispatch(setProductFetch(false));
+  };
+
+  /**
    * Call initial category on didmount effect
    */
   useDidMountEffect(() => {
-    const execute = async () => {
-      const query: IPlaceQuery = {
-        category_id: activeCategory,
-      };
-      const productsRes = await productTrigger(query).unwrap();
-      setProducts(productsRes);
-      setLoading(false);
-    };
-    execute();
+    fetchPlace();
     return true;
   });
 
@@ -59,12 +70,14 @@ function ProductListScroll(props: Props): JSX.Element {
     return (
       <>
         <ProductItem item={item} />
-        <View style={{marginRight: 12}} />
+        <View style={styles.itemPager} />
       </>
     );
   };
 
-  useDidUpdateEffect(() => {}, [activeCategory]);
+  useDidUpdateEffect(() => {
+    fetchPlace();
+  }, [activeCategory]);
 
   const _renderContent = useMemo(() => {
     if (loading) {
